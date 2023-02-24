@@ -42,7 +42,7 @@ final class RemoteFeedLoaderTests: XCTestCase {
 		let clientError = NSError(domain: "ClientError", code: 1)
 
 		sut.load { capturedErrors.append($0) }
-		client.completeWith(error: clientError)
+		client.complete(with: clientError)
 
 		XCTAssertEqual(capturedErrors, [.connectivity])
 	}
@@ -55,10 +55,21 @@ final class RemoteFeedLoaderTests: XCTestCase {
 			var capturedErrors: [RemoteFeedLoader.Error] = []
 
 			sut.load { capturedErrors.append($0) }
-			client.completeWith(statusCode: code, at: index)
+			client.complete(statusCode: code, at: index)
 
 			XCTAssertEqual(capturedErrors, [.invalidData])
 		}
+	}
+
+	func test_load_deliversErrorOn200HTTPResponseWithInvalidJSON() {
+		let (sut, client) = makeSUT()
+		let invalidJSON = Data("invalid data representation".utf8)
+		var capturedError: [RemoteFeedLoader.Error] = []
+
+		sut.load { capturedError.append($0) }
+		client.complete(with: invalidJSON, statusCode: 200)
+
+		XCTAssertEqual(capturedError, [.invalidData])
 	}
 
 	// MARK: - Helpers
@@ -85,22 +96,22 @@ final class RemoteFeedLoaderTests: XCTestCase {
 			messages.append((url, completion))
 		}
 
-		func completeWith(
-			statusCode: Int? = nil,
-			error: Error? = nil,
+		func complete(with error: Error, at index: Int = 0) {
+			messages[index].completion(.failure(error))
+		}
+
+		func complete(
+			with data: Data = Data(),
+			statusCode: Int,
 			at index: Int = 0
 		) {
-			if let statusCode {
-				let urlResponse = HTTPURLResponse(
-					url: requestedURLs[index],
-					statusCode: statusCode,
-					httpVersion: nil,
-					headerFields: nil
-				)!
-				messages[index].completion(.success(urlResponse))
-			} else if let error {
-				messages[index].completion(.failure(error))
-			}
+			let urlResponse = HTTPURLResponse(
+				url: requestedURLs[index],
+				statusCode: statusCode,
+				httpVersion: nil,
+				headerFields: nil
+			)!
+			messages[index].completion(.success(data, urlResponse))
 		}
 	}
 }
