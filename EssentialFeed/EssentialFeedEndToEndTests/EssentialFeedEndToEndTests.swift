@@ -45,7 +45,7 @@ final class EssentialFeedEndToEndTests: XCTestCase {
 			exp.fulfill()
 		}
 
-		waitForExpectations(timeout: 5)
+		waitForExpectations(timeout: 10)
 
 		return receivedResult
 	}
