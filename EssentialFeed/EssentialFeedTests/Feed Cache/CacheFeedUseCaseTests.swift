@@ -10,7 +10,7 @@ import EssentialFeed
 
 class LocalFeedLoader {
 
-	let store: FeedStore
+	private let store: FeedStore
 	private let currentDate: () -> Date
 
 	init(store: FeedStore, currentDate: @escaping () -> Date) {
@@ -150,7 +150,6 @@ final class CacheFeedUseCaseTests: XCTestCase {
 	func test_save_succeedsOnSuccessfulCacheInsertion() {
 		let (sut, store) = makeSUT()
 		let items = [uniqueItem(), uniqueItem()]
-		let insertionError = anyNSError()
 
 		var receivedError: Error?
 		let exp = expectation(description: "Wait for completion")
