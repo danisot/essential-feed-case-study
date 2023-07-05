@@ -156,12 +156,12 @@ final class LoadFeedFromRemoteUseCaseTests: XCTestCase {
 		description: String? = nil,
 		location: String? = nil,
 		imageURL: URL
-	) -> (model: FeedItem, json: [String: Any]) {
-		let item = FeedItem(
+	) -> (model: FeedImage, json: [String: Any]) {
+		let item = FeedImage(
 			id: id,
 			description: description,
 			location: location,
-			imageURL: imageURL
+			url: imageURL
 		)
 		let json = [
 			"id": id.uuidString,
@@ -182,14 +182,14 @@ final class LoadFeedFromRemoteUseCaseTests: XCTestCase {
 	}
 
 	private class HTTPClientSpy: HTTPClient {
-		var messages: [(url: URL, completion: (HTTPClientResult) -> Void)] = []
+        var messages: [(url: URL, completion: (HTTPClient.Result) -> Void)] = []
 		var requestedURLs: [URL] {
 			messages.map { $0.url }
 		}
 
 		func get(
 			from url: URL,
-			completion: @escaping (HTTPClientResult) -> Void
+            completion: @escaping (HTTPClient.Result) -> Void
 		) {
 			messages.append((url, completion))
 		}
@@ -209,7 +209,7 @@ final class LoadFeedFromRemoteUseCaseTests: XCTestCase {
 				httpVersion: nil,
 				headerFields: nil
 			)!
-			messages[index].completion(.success(data, urlResponse))
+			messages[index].completion(.success((data, urlResponse)))
 		}
 	}
 }
