@@ -1,6 +1,6 @@
 //
-//  EssentialFeedEndToEndTests.swift
-//  EssentialFeedEndToEndTests
+//  EssentialFeedAPIEndToEndTests.swift
+//  EssentialFeedAPIEndToEndTests
 //
 //  Created by José Daniel Fernández Sotelo on 19/6/23.
 //
@@ -8,7 +8,7 @@
 import XCTest
 import EssentialFeed
 
-final class EssentialFeedEndToEndTests: XCTestCase {
+final class EssentialFeedAPIEndToEndTests: XCTestCase {
 	
 	func test_endToEndTestServerGETFeedResult_matchesFixedTestAccountData() {
 		switch getFeedResult() {
