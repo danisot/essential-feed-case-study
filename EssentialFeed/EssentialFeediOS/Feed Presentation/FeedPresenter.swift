@@ -29,19 +29,16 @@ final class FeedPresenter {
     var loadingView: FeedLoadingView?
     var feedView: FeedView?
 
-    private let feedLoader: FeedLoader
-
-    init(feedLoader: FeedLoader) {
-        self.feedLoader = feedLoader
+    func didStartLoadingFeed() {
+        loadingView?.display(FeedLoadingViewModel(isLoading: true))
     }
 
-    func loadFeed() {
-        loadingView?.display(FeedLoadingViewModel(isLoading: true))
-        feedLoader.load { [weak self] result in
-            if let feed = try? result.get() {
-                self?.feedView?.display(FeedViewModel(feed: feed))
-            }
-            self?.loadingView?.display(FeedLoadingViewModel(isLoading: false))
-        }
+    func didFinishLoadingFeed(with feed: [FeedImage]) {
+        feedView?.display(FeedViewModel(feed: feed))
+        loadingView?.display(FeedLoadingViewModel(isLoading: false))
+    }
+
+    func didFinishLoadingFeed(with error: Error) {
+        loadingView?.display(FeedLoadingViewModel(isLoading: false))
     }
 }
