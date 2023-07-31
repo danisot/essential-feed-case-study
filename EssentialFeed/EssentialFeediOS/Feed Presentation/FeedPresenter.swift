@@ -19,7 +19,11 @@ protocol FeedView {
 final class FeedPresenter {
 
     static var title: String {
-        "My Feed"
+        NSLocalizedString(
+            "FEED_VIEW_TITLE",
+            tableName: "Feed",
+            bundle: Bundle(for: FeedViewController.self),
+            comment: "Title for the feed view")
     }
 
     private let loadingView: FeedLoadingView
