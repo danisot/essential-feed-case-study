@@ -48,8 +48,8 @@
 		6D8BC8AF2A55BC0200CD29E3 /* ManagedFeedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8BC8AE2A55BC0200CD29E3 /* ManagedFeedImage.swift */; };
 		6D8BC8B72A55CABF00CD29E3 /* EssentialFeedCacheIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8BC8B62A55CABF00CD29E3 /* EssentialFeedCacheIntegrationTests.swift */; };
 		6D8BC8B82A55CABF00CD29E3 /* EssentialFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D4CA60129A0F001005CAE81 /* EssentialFeed.framework */; };
-		6D9116DE2A77AFAA0070CF1F /* Feed.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D9116DD2A77AFAA0070CF1F /* Feed.strings */; };
 		6D9116E02A77B3000070CF1F /* FeedViewControllerTests+Localizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9116DF2A77B3000070CF1F /* FeedViewControllerTests+Localizations.swift */; };
+		6D9116E12A77B4CB0070CF1F /* Feed.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D9116E32A77B4CB0070CF1F /* Feed.strings */; };
 		6D990DAB2A62C96300A0A3D8 /* UIImage+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D990DAA2A62C96200A0A3D8 /* UIImage+TestHelpers.swift */; };
 		6D990DAD2A62CA1900A0A3D8 /* UIRefreshControl+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D990DAC2A62CA1900A0A3D8 /* UIRefreshControl+TestHelpers.swift */; };
 		6D990DAF2A62CAAA00A0A3D8 /* UIButton+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D990DAE2A62CAAA00A0A3D8 /* UIButton+TestHelpers.swift */; };
@@ -150,8 +150,8 @@
 		6D8BC8B42A55CABF00CD29E3 /* EssentialFeedCacheIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialFeedCacheIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D8BC8B62A55CABF00CD29E3 /* EssentialFeedCacheIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssentialFeedCacheIntegrationTests.swift; sourceTree = "<group>"; };
 		6D8BC8BE2A55CB0200CD29E3 /* EssentialFeedCacheIntegrationTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = EssentialFeedCacheIntegrationTests.xctestplan; sourceTree = "<group>"; };
-		6D9116DD2A77AFAA0070CF1F /* Feed.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Feed.strings; sourceTree = "<group>"; };
 		6D9116DF2A77B3000070CF1F /* FeedViewControllerTests+Localizations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedViewControllerTests+Localizations.swift"; sourceTree = "<group>"; };
+		6D9116E22A77B4CB0070CF1F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Feed.strings; sourceTree = "<group>"; };
 		6D990DAA2A62C96200A0A3D8 /* UIImage+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+TestHelpers.swift"; sourceTree = "<group>"; };
 		6D990DAC2A62CA1900A0A3D8 /* UIRefreshControl+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIRefreshControl+TestHelpers.swift"; sourceTree = "<group>"; };
 		6D990DAE2A62CAAA00A0A3D8 /* UIButton+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+TestHelpers.swift"; sourceTree = "<group>"; };
@@ -385,7 +385,7 @@
 				6D9A39AC2A66CF9200E7236B /* FeedLoadingViewModel.swift */,
 				6D9A39A82A669D3200E7236B /* FeedPresenter.swift */,
 				6D9A39AE2A66CFAE00E7236B /* FeedViewModel.swift */,
-				6D9116DD2A77AFAA0070CF1F /* Feed.strings */,
+				6D9116E32A77B4CB0070CF1F /* Feed.strings */,
 			);
 			path = "Feed Presentation";
 			sourceTree = "<group>";
@@ -714,7 +714,7 @@
 			files = (
 				6D7645962A769319002CB391 /* Feed.storyboard in Resources */,
 				6D7645982A769422002CB391 /* Feed.xcassets in Resources */,
-				6D9116DE2A77AFAA0070CF1F /* Feed.strings in Resources */,
+				6D9116E12A77B4CB0070CF1F /* Feed.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -859,6 +859,17 @@
 			targetProxy = 6D8BC8B92A55CABF00CD29E3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6D9116E32A77B4CB0070CF1F /* Feed.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6D9116E22A77B4CB0070CF1F /* en */,
+			);
+			name = Feed.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		6D2907692A40987A008BEEDB /* Debug */ = {
