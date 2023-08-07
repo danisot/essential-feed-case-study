@@ -43,10 +43,8 @@ final class EssentialFeedAPIEndToEndTests: XCTestCase {
 	// MARK: - Helpers
 	
     private func getFeedResult(file: StaticString = #filePath, line: UInt = #line) -> FeedLoader.Result? {
-		let client = URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
-		let testServerURL = URL(string: "https://essentialdeveloper.com/feed-case-study/test-api/feed")!
-		let loader = RemoteFeedLoader(client: client, url: testServerURL)
-		trackForMemoryLeaks(client, file: file, line: line)
+        let feedTestServerURL = URL(string: "https://essentialdeveloper.com/feed-case-study/test-api/feed")!
+        let loader = RemoteFeedLoader(client: ephemeralClient(), url: feedTestServerURL)
 		trackForMemoryLeaks(loader, file: file, line: line)
 
 		let exp = expectation(description: "Wait for completion")
@@ -63,9 +61,7 @@ final class EssentialFeedAPIEndToEndTests: XCTestCase {
 
     private func getFeedImageDataResult(file: StaticString = #file, line: UInt = #line) -> FeedImageDataLoader.Result? {
         let testServerURL = URL(string: "https://ile-api.essentialdeveloper.com/essential-feed/v1/feed")!
-        let client = URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
-        let loader = RemoteFeedImageDataLoader(client: client)
-        trackForMemoryLeaks(client, file: file, line: line)
+        let loader = RemoteFeedImageDataLoader(client: ephemeralClient())
         trackForMemoryLeaks(loader, file: file, line: line)
 
         let exp = expectation(description: "Wait for load completion")
@@ -78,6 +74,12 @@ final class EssentialFeedAPIEndToEndTests: XCTestCase {
         waitForExpectations(timeout: 10)
 
         return receivedResult
+    }
+
+    private func ephemeralClient(file: StaticString = #file, line: UInt = #line) -> HTTPClient {
+        let client = URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
+        trackForMemoryLeaks(client, file: file, line: line)
+        return client
     }
 
 	private func expectedImage(at index: Int) -> FeedImage {
