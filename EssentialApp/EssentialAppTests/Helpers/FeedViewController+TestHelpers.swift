@@ -59,9 +59,13 @@ extension FeedViewController {
         tableView.numberOfRows(inSection: feedImagesSection)
     }
 
-    func feedImageView(at index: Int) -> UITableViewCell? {
+    func feedImageView(at row: Int) -> UITableViewCell? {
+        guard numberOfRenderedFeedImageViews() > row else {
+            return nil
+        }
+
         let datasource = tableView.dataSource
-        let indexPath = IndexPath(row: index, section: feedImagesSection)
+        let indexPath = IndexPath(row: row, section: feedImagesSection)
         let cell = datasource?.tableView(tableView, cellForRowAt: indexPath)
 
         return cell
