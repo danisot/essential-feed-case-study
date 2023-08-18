@@ -30,7 +30,6 @@
 		6D865F382A83738D002DF3E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D865F372A83738D002DF3E8 /* AppDelegate.swift */; };
 		6D865F3A2A83738D002DF3E8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D865F392A83738D002DF3E8 /* SceneDelegate.swift */; };
 		6D865F3C2A83738D002DF3E8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D865F3B2A83738D002DF3E8 /* ViewController.swift */; };
-		6D865F3F2A83738D002DF3E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D865F3D2A83738D002DF3E8 /* Main.storyboard */; };
 		6D865F412A83738F002DF3E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D865F402A83738F002DF3E8 /* Assets.xcassets */; };
 		6D865F442A83738F002DF3E8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D865F422A83738F002DF3E8 /* LaunchScreen.storyboard */; };
 		6D865F4F2A83738F002DF3E8 /* FeedLoaderWithFallbackCompositeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D865F4E2A83738F002DF3E8 /* FeedLoaderWithFallbackCompositeTests.swift */; };
@@ -103,7 +102,6 @@
 		6D865F372A83738D002DF3E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6D865F392A83738D002DF3E8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		6D865F3B2A83738D002DF3E8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		6D865F3E2A83738D002DF3E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6D865F402A83738F002DF3E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6D865F432A83738F002DF3E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6D865F452A83738F002DF3E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -181,7 +179,6 @@
 				6DDE028C2A84DF7F00373E71 /* FeedImageDataLoaderWithFallbackComposite.swift */,
 				6D948DE32A87DC1B006C89F8 /* FeedLoaderCacheDecorator.swift */,
 				6D9459442A8A4CA50072DFFC /* FeedImageDataLoaderCacheDecorator.swift */,
-				6D865F3D2A83738D002DF3E8 /* Main.storyboard */,
 				6D865F402A83738F002DF3E8 /* Assets.xcassets */,
 				6D865F422A83738F002DF3E8 /* LaunchScreen.storyboard */,
 				6D865F452A83738F002DF3E8 /* Info.plist */,
@@ -321,7 +318,6 @@
 			files = (
 				6D865F442A83738F002DF3E8 /* LaunchScreen.storyboard in Resources */,
 				6D865F412A83738F002DF3E8 /* Assets.xcassets in Resources */,
-				6D865F3F2A83738D002DF3E8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,14 +393,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		6D865F3D2A83738D002DF3E8 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6D865F3E2A83738D002DF3E8 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		6D865F422A83738F002DF3E8 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -547,7 +535,6 @@
 				INFOPLIST_FILE = EssentialApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -577,7 +564,6 @@
 				INFOPLIST_FILE = EssentialApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
