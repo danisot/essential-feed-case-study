@@ -78,12 +78,17 @@ extension Publisher {
 extension DispatchQueue {
 
     static var inmediateWhenOnMainQueueScheduler: InmediateWhenOnMainQueueScheduler {
-        InmediateWhenOnMainQueueScheduler()
+        InmediateWhenOnMainQueueScheduler.shared
     }
 
     struct InmediateWhenOnMainQueueScheduler: Scheduler {
         typealias SchedulerTimeType = DispatchQueue.SchedulerTimeType
         typealias SchedulerOptions = DispatchQueue.SchedulerOptions
+
+        static let shared = Self()
+
+        private static let key = DispatchSpecificKey<UInt8>()
+        private static let value = UInt8.max
 
         var now: SchedulerTimeType {
             DispatchQueue.main.now
@@ -93,8 +98,12 @@ extension DispatchQueue {
             DispatchQueue.main.minimumTolerance
         }
 
+        private init() {
+            DispatchQueue.main.setSpecific(key: Self.key, value: Self.value)
+        }
+
         func schedule(options: DispatchQueue.SchedulerOptions?, _ action: @escaping () -> Void) {
-            guard Thread.isMainThread else {
+            guard isMainQueue() else {
                 return DispatchQueue.main.schedule(options: options, action)
             }
 
@@ -107,6 +116,10 @@ extension DispatchQueue {
 
         func schedule(after date: DispatchQueue.SchedulerTimeType, interval: DispatchQueue.SchedulerTimeType.Stride, tolerance: DispatchQueue.SchedulerTimeType.Stride, options: DispatchQueue.SchedulerOptions?, _ action: @escaping () -> Void) -> Cancellable {
             DispatchQueue.main.schedule(after: date, interval: interval, tolerance: tolerance, options: options, action)
+        }
+
+        private func isMainQueue() -> Bool {
+            DispatchQueue.getSpecific(key: Self.key) == Self.value
         }
     }
 }
