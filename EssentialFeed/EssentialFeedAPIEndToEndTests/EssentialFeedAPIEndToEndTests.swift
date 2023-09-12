@@ -42,15 +42,20 @@ final class EssentialFeedAPIEndToEndTests: XCTestCase {
 
 	// MARK: - Helpers
 	
-    private func getFeedResult(file: StaticString = #filePath, line: UInt = #line) -> FeedLoader.Result? {
+    private func getFeedResult(file: StaticString = #filePath, line: UInt = #line) -> Swift.Result<[FeedImage], Error>? {
         let feedTestServerURL = URL(string: "https://essentialdeveloper.com/feed-case-study/test-api/feed")!
-        let loader = RemoteFeedLoader(client: ephemeralClient(), url: feedTestServerURL)
-		trackForMemoryLeaks(loader, file: file, line: line)
+        let client = ephemeralClient()
 
 		let exp = expectation(description: "Wait for completion")
-        var receivedResult: FeedLoader.Result?
-		loader.load { result in
-			receivedResult = result
+        var receivedResult: Swift.Result<[FeedImage], Error>?
+		client.get(from: feedTestServerURL) { result in
+            receivedResult = result.flatMap { (data, response) in
+                do {
+                    return .success(try FeedItemsMapper.map(data, response))
+                } catch {
+                    return .failure(error)
+                }
+            }
 			exp.fulfill()
 		}
 
@@ -60,17 +65,24 @@ final class EssentialFeedAPIEndToEndTests: XCTestCase {
 	}
 
     private func getFeedImageDataResult(file: StaticString = #file, line: UInt = #line) -> FeedImageDataLoader.Result? {
+        let client = ephemeralClient()
         let testServerURL = URL(string: "https://ile-api.essentialdeveloper.com/essential-feed/v1/feed")!
-        let loader = RemoteFeedImageDataLoader(client: ephemeralClient())
-        trackForMemoryLeaks(loader, file: file, line: line)
 
         let exp = expectation(description: "Wait for load completion")
 
         var receivedResult: FeedImageDataLoader.Result?
-        _ = loader.loadImageData(from: testServerURL) { result in
-            receivedResult = result
+
+        client.get(from: testServerURL) { result in
+            receivedResult = result.flatMap { (data, response) in
+                do {
+                    return .success(try FeedImageDataMapper.map(data, from: response))
+                } catch {
+                    return .failure(error)
+                }
+            }
             exp.fulfill()
         }
+
         waitForExpectations(timeout: 10)
 
         return receivedResult
