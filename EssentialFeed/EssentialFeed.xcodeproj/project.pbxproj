@@ -329,10 +329,11 @@
 			children = (
 				6D66CF8C2AB0830D00990143 /* Shared API */,
 				6D66CF8D2AB0832700990143 /* Shared API Infra */,
+				6D4CA61D29A0F559005CAE81 /* Feed Feature */,
 				6DB830A52A45D92800BDC45B /* Feed Cache */,
 				6D4CA62029A13EC4005CAE81 /* Feed API */,
-				6D4CA61D29A0F559005CAE81 /* Feed Feature */,
 				6D66CF892AB06ED500990143 /* Image Comments Feature */,
+				6D66CF912AB08DDE00990143 /* Image Comments API */,
 				6D9117042A7810E10070CF1F /* Feed Presentation */,
 			);
 			path = EssentialFeed;
@@ -341,11 +342,12 @@
 		6D4CA60D29A0F001005CAE81 /* EssentialFeedTests */ = {
 			isa = PBXGroup;
 			children = (
+				6D660EA12A4048E100B4634B /* Helpers */,
 				6D66CF8E2AB0835000990143 /* Shared API */,
 				6D66CF902AB0837500990143 /* Shared API Infra */,
-				6D660EA12A4048E100B4634B /* Helpers */,
 				6D769AA82A42FCEC003F2D60 /* Feed Cache */,
 				6DF1DFC329E0755100EE56C2 /* Feed API */,
+				6D66CF922AB08E5D00990143 /* Image Comments API */,
 				6D9116FA2A7800020070CF1F /* Feed Presentation */,
 			);
 			path = EssentialFeedTests;
@@ -371,8 +373,6 @@
 				6D4CA62129A13EE1005CAE81 /* RemoteFeedLoader.swift */,
 				6DF1DFC129E06C3600EE56C2 /* FeedItemsMapper.swift */,
 				6D85C4B72A81555D00581213 /* RemoteFeedImageDataLoader.swift */,
-				6D66CF852AB0659A00990143 /* RemoteImageCommentsLoader.swift */,
-				6D66CF872AB0682C00990143 /* ImageCommentsMapper.swift */,
 			);
 			path = "Feed API";
 			sourceTree = "<group>";
@@ -433,6 +433,23 @@
 				6DB82BA42A0576F30005EFA3 /* URLSessionHTTPClientTests.swift */,
 			);
 			path = "Shared API Infra";
+			sourceTree = "<group>";
+		};
+		6D66CF912AB08DDE00990143 /* Image Comments API */ = {
+			isa = PBXGroup;
+			children = (
+				6D66CF852AB0659A00990143 /* RemoteImageCommentsLoader.swift */,
+				6D66CF872AB0682C00990143 /* ImageCommentsMapper.swift */,
+			);
+			path = "Image Comments API";
+			sourceTree = "<group>";
+		};
+		6D66CF922AB08E5D00990143 /* Image Comments API */ = {
+			isa = PBXGroup;
+			children = (
+				6D66CF832AB0645000990143 /* LoadImageCommentsFromRemoteUseCaseTests.swift */,
+			);
+			path = "Image Comments API";
 			sourceTree = "<group>";
 		};
 		6D769AA82A42FCEC003F2D60 /* Feed Cache */ = {
@@ -615,7 +632,6 @@
 			children = (
 				6D4CA61E29A12EA5005CAE81 /* LoadFeedFromRemoteUseCaseTests.swift */,
 				6D85C4B22A80E42700581213 /* LoadFeedImageDataFromRemoteUseCaseTests.swift */,
-				6D66CF832AB0645000990143 /* LoadImageCommentsFromRemoteUseCaseTests.swift */,
 			);
 			path = "Feed API";
 			sourceTree = "<group>";
