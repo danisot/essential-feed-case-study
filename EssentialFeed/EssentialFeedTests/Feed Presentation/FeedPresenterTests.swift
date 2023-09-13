@@ -14,10 +14,12 @@ final class FeedPresenterTests: XCTestCase {
         XCTAssertEqual(FeedPresenter.title, localized("FEED_VIEW_TITLE"))
     }
 
-    func test_init_doesNotSendMessagesToView() {
-        let (_, view) = makeSUT()
+    func test_map_createsViewModel() {
+        let feed = uniqueImageFeed().models
 
-        XCTAssertTrue(view.messages.isEmpty, "Expected no view messages")
+        let viewModel = FeedPresenter.map(feed)
+
+        XCTAssertEqual(viewModel.feed, feed)
     }
 
     func test_didStartLoadingFeed_displaysNoErrorMessageAndStartsLoading() {
