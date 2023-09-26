@@ -22,16 +22,18 @@ final class LoadResourcePresentationAdapter<Resource, View: ResourceView> {
 
     func loadResource() {
         presenter?.didStartLoading()
-        cancellable = loader().sink(
-            receiveCompletion: { [weak self] completion in
-                switch completion {
-                case .finished: break
-                case .failure(let error):
-                    self?.presenter?.didFinishLoading(with: error)
-                }
-            }, receiveValue: { [weak self] resource in
-                self?.presenter?.didFinishLoading(with: resource)
-            })
+        cancellable = loader()
+            .dispatchOnMainQueue()
+            .sink(
+                receiveCompletion: { [weak self] completion in
+                    switch completion {
+                    case .finished: break
+                    case .failure(let error):
+                        self?.presenter?.didFinishLoading(with: error)
+                    }
+                }, receiveValue: { [weak self] resource in
+                    self?.presenter?.didFinishLoading(with: resource)
+                })
     }
 }
 
