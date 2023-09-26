@@ -1,5 +1,5 @@
 //
-//  CoreDataFeedStore+FeedImageDataLoader.swift
+//  CoreDataFeedStore+FeedImageDataStore.swift
 //  EssentialFeed
 //
 //  Created by José Daniel Fernández Sotelo on 8/8/23.
