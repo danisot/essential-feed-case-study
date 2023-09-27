@@ -1,6 +1,6 @@
 # Essential App Case Study
 
-[![CI](https://github.com/danisot/essential-feed-case-study/actions/workflows/CI.yml/badge.svg)](https://github.com/danisot/essential-feed-case-study/actions/workflows/CI.yml)
+![CI-macOS](https://github.com/danisot/essential-feed-case-study/actions/workflows/CI-macOS.yml/badge.svg) ![CI-iOS](https://github.com/danisot/essential-feed-case-study/actions/workflows/CI-iOS.yml/badge.svg)
 
 ## Image Feed Feature Specs
 
