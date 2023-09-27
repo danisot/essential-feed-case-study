@@ -21,6 +21,8 @@ extension FeedUIIntegrationTests {
         feed.enumerated().forEach { index, image in
             assertThat(sut, hasViewConfiguredFor: image, at: index, file: file, line: line)
         }
+
+        executeRunLoopToCleanUpReferences()
     }
     
     func assertThat(_ sut: ListViewController, hasViewConfiguredFor image: FeedImage, at index: Int, file: StaticString = #filePath, line: UInt = #line) {
@@ -36,5 +38,9 @@ extension FeedUIIntegrationTests {
         XCTAssertEqual(cell.locationText, image.location, "Expect location text to be \(String(describing: image.location)), for image view at index \(index)", file: file, line: line)
         
         XCTAssertEqual(cell.descriptionText, image.description, "Expect description text to be \(String(describing: image.description)), for image view at index \(index)", file: file, line: line)
+    }
+
+    private func executeRunLoopToCleanUpReferences() {
+        RunLoop.current.run(until: Date())
     }
 }
