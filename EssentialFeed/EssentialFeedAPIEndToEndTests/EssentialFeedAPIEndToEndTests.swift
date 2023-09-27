@@ -64,13 +64,13 @@ final class EssentialFeedAPIEndToEndTests: XCTestCase {
 		return receivedResult
 	}
 
-    private func getFeedImageDataResult(file: StaticString = #file, line: UInt = #line) -> FeedImageDataLoader.Result? {
+    private func getFeedImageDataResult(file: StaticString = #file, line: UInt = #line) -> Result<Data, Error>? {
         let client = ephemeralClient()
         let testServerURL = URL(string: "https://ile-api.essentialdeveloper.com/essential-feed/v1/feed")!
 
         let exp = expectation(description: "Wait for load completion")
 
-        var receivedResult: FeedImageDataLoader.Result?
+        var receivedResult: Result<Data, Error>?
 
         client.get(from: testServerURL) { result in
             receivedResult = result.flatMap { (data, response) in
